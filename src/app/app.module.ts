@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhotosModule } from './photos/photo.module';
 
+import { HomeModule } from './home/home.module';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { PhotosModule } from './photos/photo.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PhotosModule
+    PhotosModule,
+    HomeModule
   
   ],
   providers: [],
