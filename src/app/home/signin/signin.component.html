@@ -1,9 +1,9 @@
 <h4 class="text-center mt-4 ">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4">
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
     <div class="form-group mt-2 ">
-        <input  
+        <input  #userNameInput
             formControlName="userName"
             class="form-control" 
             placeholder="user name" 
@@ -28,7 +28,7 @@
     </div>
 
     <div class="d-grid gap-2 mt-2 ">
-        <button [disabled]="loginForm.invalid"  type="submit" class="btn btn-primary">
+        <button [disabled]="loginForm.invalid"  type="submit" class="btn btn-primary" >
             login
          </button>
     </div>
