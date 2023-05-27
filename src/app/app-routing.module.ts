@@ -7,7 +7,7 @@ import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
-  { path: '', component: SigninComponent},
+  { path: 'login', component: SigninComponent},
   { 
     path: 'user/:userName',
     component: PhotoListComponent,
