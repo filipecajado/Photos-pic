@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "src/app/core/auth/auth.service";
@@ -17,7 +17,8 @@ export class SigninComponent implements OnInit{
         private formBuilder: FormBuilder,
         private authService: AuthService,
         private router: Router,
-        private platformDetectorService: PlatformDetectorService
+        private platformDetectorService: PlatformDetectorService,
+        private cdRef: ChangeDetectorRef
         ){}
 
     ngOnInit(): void {
@@ -25,6 +26,12 @@ export class SigninComponent implements OnInit{
             userName: ['', Validators.required],
             password: ['', Validators.required]
         });
+    }
+
+    ngAfterViewInit(): void {
+        this.platformDetectorService.isPlatformBrowser() &&
+        this.userNameInput.nativeElement.focus();
+        this.cdRef.detectChanges();
     }
 
     login(){

@@ -1,8 +1,8 @@
 <h4 class="text-center mt-2"> Register to embrace a new world!</h4>
 
-<form [formGroup]="signupForm" class="form mt-4 p-2">
+<form [formGroup]="signupForm" class="form mt-4 p-2" (submit)="signup()">
     <div class="form-group m-2">
-        <input formControlName="email" placeholder="email" class="form-control" autofocus >
+        <input #inputEmail formControlName="email" placeholder="email" class="form-control" autofocus >
         <ap-vmessage *ngIf="signupForm.get('email')?.errors?.['required']"
         text="Email is required!">          
         </ap-vmessage>  
@@ -59,5 +59,5 @@
 
     <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block m-2">Register</button>
 
-    <p class="m-2">Already a user?<a [routerLink]="['login']">Sign In!</a></p>
+    <p class="m-2">Already a user?<a [routerLink]="['/login']">Sign In!</a></p>
 </form>
