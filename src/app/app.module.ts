@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhotosModule } from './photos/photo.module';
 
-import { HomeModule } from './home/home.module';
 import { CoreModule } from "./core/core.module";
 
 
@@ -19,10 +18,9 @@ import { CoreModule } from "./core/core.module";
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         PhotosModule,
-        HomeModule,
-        CoreModule
+        CoreModule,
+        AppRoutingModule,
     ]
 })
 export class AppModule { }

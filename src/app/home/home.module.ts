@@ -6,6 +6,8 @@ import { VMessageModule } from "../shared/components/vmessage/vmessage.module";
 import { RouterModule } from "@angular/router";
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from "./home.component";
+import { HomeRoutingModule } from "./home.routing.module";
+import { SignupService } from "./signup/signup.service";
 
 @NgModule({
     declarations: [ SigninComponent, SignupComponent, HomeComponent],
@@ -14,7 +16,11 @@ import { HomeComponent } from "./home.component";
         CommonModule,
         VMessageModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        HomeRoutingModule
+     ],
+     providers: [
+        SignupService
      ]
 
 })
