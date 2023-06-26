@@ -25,14 +25,14 @@ export class PhotoService{
        .get<Photo[]>( API + '/' + userName +  '/photos', { params });
    }
 
-   upload(description: string, allowComents: boolean, file: File) {
+   upload(description: string, allowComments: boolean, file: File) {
 
         const formData = new FormData();
         formData.append('description', description);
-        formData.append('allowComents', allowComents ? 'true' : 'false');
+        formData.append('allowComments', allowComments ? 'true' : 'false');
         formData.append('imageFile', file);
 
-        console.log(file, allowComents, description);
+        console.log(file, allowComments, description);
         
         return this.http.post(API + '/photos/upload', formData);
 
