@@ -1,6 +1,13 @@
 <header class="fixed-top p-2">
     <nav class="navbar navbar-light bg-white me-3">
-        <a class="navbar-brand">ALURAPIC</a>
+        <a class="navbar-brand">
+            <i tabindex="0" (keyup.space)="menu.toggle()" class="fa fa-bars mr-2" (click)="menu.toggle()"></i>
+            ALURAPIC</a>
+        <ap-menu #menu>
+            <ul class="list-unstyled">
+                <a showIfLogged [routerLink]="['p','add']">Upload</a>
+            </ul>
+        </ap-menu>
         <div *ngIf="(user$ | async) as user; else login" class="d-flex align-items-center ">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -17,6 +24,7 @@
         </ng-template>
     </nav>
     <div class="fixed-top">
+        <ap-loading></ap-loading>
         <ap-alert></ap-alert>
     </div>
 </header>

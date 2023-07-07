@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PhotosModule } from './photos/photo.module';
 
 import { CoreModule } from "./core/core.module";
+import { ErrorsModule } from './errors/errors.module';
 
 
 
@@ -20,6 +21,7 @@ import { CoreModule } from "./core/core.module";
         BrowserModule,
         PhotosModule,
         CoreModule,
+        ErrorsModule,
         AppRoutingModule,
     ]
 })

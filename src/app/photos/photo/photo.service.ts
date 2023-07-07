@@ -3,8 +3,9 @@ import { Injectable } from "@angular/core";
 import { Photo } from "./photo";
 import { PhotoComments } from "./photo-comment";
 import { catchError, map, of, throwError } from "rxjs";
+import { environment } from '../../../environments/environment';
 
-const API = 'http://localhost:3000';
+const API = environment.ApiUrl;
 
 @Injectable({ providedIn: 'root'})
 export class PhotoService{
@@ -24,7 +25,7 @@ export class PhotoService{
         .append('page', page.toString())
 
         return this.http
-       .get<Photo[]>( API + '/' + userName +  '/photos', { params });
+       .get<Photo[]>( API + '/' + userName +  '/photosx', { params });
    }
 
    upload(description: string, allowComments: boolean, file: File) {
@@ -36,7 +37,7 @@ export class PhotoService{
 
         console.log(file, allowComments, description);
         
-        return this.http.post(API + '/photos/upload', formData);
+        return this.http.post(API + '/photos/upload', formData, {observe: 'events', reportProgress: true});
 
    }
 
