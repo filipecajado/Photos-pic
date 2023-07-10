@@ -6,6 +6,7 @@ import { NewUser } from './new-user';
 import { SignupService } from './signup.service';
 import { Router } from '@angular/router';
 import { PlatformDetectorService } from 'src/app/core/plataform-detector/plataform-detector.service';
+import { userNamePassword } from './username-password.validator';
 
 @Component({
   selector: 'ap-signup',
@@ -34,6 +35,8 @@ export class SignupComponent implements OnInit{
         userName: ['', [Validators.required, lowerCaseValidator, Validators.minLength(2), Validators.maxLength(30)], this.userNotTakenValidatorService.checkUserNameTaken()],
         fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
         password: ['',[Validators.required, Validators.minLength(8), Validators.maxLength(14)]]
+      }, {
+        validator: userNamePassword
       })
   }
 
@@ -43,13 +46,16 @@ export class SignupComponent implements OnInit{
     this.cdRef.detectChanges();
 }
   signup(){
-    const newUser = this.signupForm.getRawValue() as NewUser;
-    this.signupService
-        .signup(newUser)
-        .subscribe(
-          () => this.router.navigate(['home']),
-          err => console.log(err)
-         );
+    if(this.signupForm.invalid && !this.signupForm.pending) {
+
+      const newUser = this.signupForm.getRawValue() as NewUser;
+      this.signupService
+          .signup(newUser)
+          .subscribe(
+            () => this.router.navigate(['home']),
+            err => console.log(err)
+           );
+    }
   }
 
 }
